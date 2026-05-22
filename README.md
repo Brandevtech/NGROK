@@ -5,7 +5,7 @@
 **Compartilhe seu projeto local em segundos — direto da Activity Bar do VS Code.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.75.0-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
-[![Version](https://img.shields.io/badge/version-1.0.0-38bdf8?style=flat-square)](#instalação)
+[![Version](https://img.shields.io/badge/version-1.0.1-38bdf8?style=flat-square)](#instalação)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/licença-MIT-10b981?style=flat-square)](#licença)
 
@@ -33,7 +33,7 @@
 | 📟 **Painel Lateral** | Interface visual integrada na Activity Bar do VS Code |
 | 🔄 **Inicialização Automática** | Clique em "Atualizar" para salvar a URL e já iniciar o túnel |
 | 📱 **QR Code Dinâmico** | Gerado automaticamente assim que o Ngrok detecta o túnel ativo |
-| 🔐 **Suporte a Authtoken** | Campo dedicado para o token de autenticação do Ngrok (planos pagos) |
+| 🔐 **Token de Autenticação** | O **Authtoken** é obrigatório para gerar os túneis do Ngrok (mesmo no plano gratuito) |
 | 🌐 **Auto `https://`** | Protocolo inserido automaticamente se você digitar só o domínio |
 | 🔁 **Virtual Hosts** | Suporte nativo a domínios `.local` (Apache/Nginx com VirtualHosts) |
 | 💾 **Configurações Persistidas** | URL e token ficam salvos entre sessões do VS Code |
@@ -56,11 +56,11 @@ ngrok version
 
 > 💡 No Windows, garanta que o executável `ngrok` esteja no `PATH` do sistema para que o terminal do VS Code possa encontrá-lo.
 
-### 2. Conta no Ngrok (recomendado)
+### 2. Conta e Authtoken do Ngrok (Obrigatório)
 
 Crie sua conta gratuita em [dashboard.ngrok.com/signup](https://dashboard.ngrok.com/signup).
 
-A conta gratuita já permite criar túneis — o **Authtoken** é necessário para evitar erros de sessão expirada e para usar recursos avançados.
+O **Authtoken** é **obrigatório** para que o Ngrok consiga gerar a URL pública e o QR Code, mesmo na versão gratuita. Sem ele, a extensão não conseguirá estabelecer o túnel.
 
 ---
 
@@ -123,7 +123,7 @@ saldaomogi.local                ← sem protocolo? sem problema! https:// é adi
 
 > ✨ **Dica:** Você não precisa digitar `https://`. A extensão adiciona o protocolo automaticamente se estiver faltando.
 
-### Passo 3 — Adicione seu Authtoken (opcional, mas recomendado)
+### Passo 3 — Adicione seu Authtoken (Obrigatório)
 
 Cole seu **Authtoken** do Ngrok no campo dedicado. Para encontrá-lo:
 
@@ -149,6 +149,30 @@ ngrok http https://meusite.local --host-header=rewrite --authtoken=SEU_TOKEN
 ### Passo 5 — Compartilhe!
 
 Escaneie o QR Code com seu celular ou envie o link público do Ngrok para quem precisar acessar seu projeto. 📱
+
+---
+
+## Configuração via `settings.json`
+
+Você também pode configurar a extensão diretamente através do arquivo `settings.json` do VS Code. Isso é útil para agilizar o fluxo de trabalho e evitar ter que digitar as informações no painel:
+
+- **Se você possui apenas um projeto principal:**
+  Recomendamos inserir a URL local padrão e o seu Authtoken no `settings.json` global da IDE (**User Settings**). Dessa forma, a configuração estará disponível automaticamente em qualquer projeto ou janela do VS Code que você abrir.
+  
+- **Se você trabalha com múltiplos projetos (múltiplas URLs locais):**
+  Recomendamos inserir as configurações no `settings.json` do **Workspace** (dentro da pasta `.vscode/settings.json` do seu respectivo projeto). Isso permite que cada projeto tenha sua própria URL local pré-configurada de forma totalmente independente.
+
+### Exemplo de Configuração:
+
+```json
+{
+  "ngrokShare.localUrl": "http://localhost:3000",
+  "ngrokShare.authtoken": "SEU_AUTHTOKEN_AQUI"
+}
+```
+
+> ⚠️ **Importante:** O **Authtoken é obrigatório** para o Ngrok conseguir gerar a URL pública e o QR Code, mesmo se você estiver utilizando o plano gratuito.
+
 
 ---
 
@@ -179,7 +203,7 @@ ngrok-share/
 │   └── extension.js          # Bundle compilado (gerado pelo build)
 ├── package.json              # Manifesto da extensão VS Code
 ├── tsconfig.json             # Configuração TypeScript
-└── antigravity-ngrok-share-1.0.0.vsix  # Instalador
+└── antigravity-ngrok-share-1.0.1.vsix  # Instalador
 ```
 
 ---

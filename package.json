@@ -3,7 +3,7 @@
   "displayName": "Ngrok Share QR Code",
   "icon": "media/logo.png",
   "description": "Compartilhe seu projeto local rodando via Ngrok instantaneamente através de um QR Code na Activity Bar.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "Brandev",
   "engines": {
     "vscode": "^1.75.0"
