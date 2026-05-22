@@ -1,0 +1,78 @@
+{
+  "name": "antigravity-ngrok-share",
+  "displayName": "Ngrok Share QR Code",
+  "icon": "media/logo.png",
+  "description": "Compartilhe seu projeto local rodando via Ngrok instantaneamente através de um QR Code na Activity Bar.",
+  "version": "1.0.0",
+  "publisher": "Brandev",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/local/ngrok-share"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ngrok-share-container",
+          "title": "Ngrok Share",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ngrok-share-container": [
+        {
+          "type": "webview",
+          "id": "ngrok-share.sidebar",
+          "name": "Ngrok Share",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ngrok-share.refresh",
+        "title": "Ngrok Share: Atualizar QR Code",
+        "icon": "$(refresh)"
+      }
+    ],
+    "configuration": {
+      "title": "Ngrok Share",
+      "properties": {
+        "ngrokShare.localUrl": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "URL local padrão a ser compartilhada via Ngrok. Exemplo: `https://meusite.local` ou `http://localhost:3000`. Pode ser sobrescrita pela interface do painel."
+        },
+        "ngrokShare.authtoken": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Authtoken do Ngrok para autenticação ([obtenha aqui](https://dashboard.ngrok.com/authtokens)). Pode ser sobrescrito pela interface do painel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "cmd.exe /c \"npm run esbuild-base -- --minify\"",
+    "esbuild-base": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "build": "tsc -p ./ && npm run esbuild-base",
+    "watch": "tsc -p ./ -w"
+  },
+  "devDependencies": {
+    "@types/node": "^18.17.0",
+    "@types/qrcode": "^1.5.1",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.19.2",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}

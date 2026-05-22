@@ -1,0 +1,46 @@
+# ─── Scripts locais de ambiente ───────────────────────────────────────────────
+# Esses arquivos contêm caminhos absolutos da máquina e não devem ser versionados
+INICIAR.cmd
+INICIAR.vbs
+
+# ─── Build e distribuição ─────────────────────────────────────────────────────
+dist/
+out/
+*.vsix
+
+# ─── Dependências ─────────────────────────────────────────────────────────────
+node_modules/
+
+# ─── TypeScript ───────────────────────────────────────────────────────────────
+*.js.map
+*.d.ts
+
+# ─── VS Code ──────────────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# ─── Sistema Operacional ──────────────────────────────────────────────────────
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ─── Variáveis de ambiente ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*

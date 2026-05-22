@@ -1,0 +1,13 @@
+.vscode/**
+.git/**
+node_modules/**
+src/**
+tsconfig.json
+out/**
+INICIAR.cmd
+INICIAR.vbs
+*.vsix
+.gitignore
+task.md
+implementation_plan.md
+walkthrough.md
