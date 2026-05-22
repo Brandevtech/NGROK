@@ -5,9 +5,11 @@
 **Compartilhe seu projeto local em segundos — direto da Activity Bar do VS Code.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.75.0-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
-[![Version](https://img.shields.io/badge/version-1.0.1-38bdf8?style=flat-square)](#instalação)
+[![Version](https://img.shields.io/badge/version-1.0.1-38bdf8?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=Brandev.antigravity-ngrok-share)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/licença-MIT-10b981?style=flat-square)](#licença)
+
+[👉 Instalar via VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Brandev.antigravity-ngrok-share)
 
 </div>
 
@@ -66,7 +68,12 @@ O **Authtoken** é **obrigatório** para que o Ngrok consiga gerar a URL públic
 
 ## Instalação
 
-### Via VSIX (instalação local)
+### Via VS Code Marketplace (Recomendado)
+
+1. Acesse a página do [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Brandev.antigravity-ngrok-share) e clique em **Install**, OU
+2. No seu VS Code, abra o painel de **Extensões** (`Ctrl+Shift+X`), pesquise por `Ngrok Share QR Code` ou `Brandev` e clique em **Instalar**.
+
+### Via VSIX (Instalação Local)
 
 1. Abra o VS Code
 2. Pressione `Ctrl+Shift+X` para abrir o painel de **Extensões**
